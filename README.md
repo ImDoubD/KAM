@@ -5,7 +5,7 @@ npm i
 npm run build
 npm start
 ```
-All the required packages will be installed using this command `npm i`.
+All the required packages will be installed using this command `npm i`. \
 Always build first using `npm run build` and start the server using `npm start`, whenever changes done in code.
 
 
