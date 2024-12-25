@@ -15,7 +15,7 @@ Always build first using `npm run build` and start the server using `npm start`,
 - The database is the in-memory SQLite3 so whenever changes are done in the code, the build command has to be run again which will reset the database.
 - To start the server, use command: `npm start` \
   Hit the API's (in Postman or Thunderclient) in this order: 
-- Post `http://localhost:3000/api/leads` or `https://kam-62ez.onrender.com/api/leads`\
+- 𝗣𝗢𝗦𝗧 `http://localhost:3000/api/leads` or `https://kam-62ez.onrender.com/api/leads`\
   Sample input:
   ```bash
     {
@@ -27,13 +27,13 @@ Always build first using `npm run build` and start the server using `npm start`,
     }
   ```
   This above API is for storing the restaurant leads.
-- Get `http://localhost:3000/api/leads` or `https://kam-62ez.onrender.com/api/leads` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/leads` or `https://kam-62ez.onrender.com/api/leads` \
   Sample input: No input required. \
   This will fetch the list of all the leads in the database.
-- Get `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
   Sample input: id (in the url) \
   This will fetch the details of lead with provided lead id.
-- Get `http://localhost:3000/api/lead-search` or `https://kam-62ez.onrender.com/api/lead-search` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/lead-search` or `https://kam-62ez.onrender.com/api/lead-search` \
   Sample input: (provide in the query params)
   ```bash
   query : "Hub"
@@ -41,7 +41,7 @@ Always build first using `npm run build` and start the server using `npm start`,
   assignedKAM : "John Doe" 
   ```
   This will search the leads and provide details of the leads according to the query (search done in restaurant name), status, assignedKAM given.
-- Put `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
+- 𝗣𝗨𝗧 `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
   Sample input: Provide id in the url. Can provide any of the lead attribute in the request body.
   ```bash
     {
@@ -53,10 +53,10 @@ Always build first using `npm run build` and start the server using `npm start`,
     }
   ```
   This API will update the lead entry as per given id, according to the given data in request body. 
-- Delete `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
+- 𝗗𝗘𝗟𝗘𝗧𝗘 `http://localhost:3000/api/leads/:id` or `https://kam-62ez.onrender.com/api/leads/:id` \
   Sample input: Provide id in url. \
   This API will delete the lead entry in the database.
-- Post `http://localhost:3000/api/contacts` or `https://kam-62ez.onrender.com/api/contacts` \
+- 𝗣𝗢𝗦𝗧 `http://localhost:3000/api/contacts` or `https://kam-62ez.onrender.com/api/contacts` \
   Sample input:
   ```bash
     {
@@ -68,10 +68,10 @@ Always build first using `npm run build` and start the server using `npm start`,
     }
   ```
   This above API is for storing the contact information of the restaurant (associated with the lead id).
-- Get `http://localhost:3000/api/contacts/:leadId` or `https://kam-62ez.onrender.com/api/contacts/:leadId` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/contacts/:leadId` or `https://kam-62ez.onrender.com/api/contacts/:leadId` \
   Sample input: Provide lead id in the url. \
   This API fetches the contact details of the restaurant associated with the given lead id.
-- Post `http://localhost:3000/api/interactions` or `https://kam-62ez.onrender.com/api/interactions` \
+- 𝗣𝗢𝗦𝗧 `http://localhost:3000/api/interactions` or `https://kam-62ez.onrender.com/api/interactions` \
   Sample input:
   ```bash
     {
@@ -83,13 +83,13 @@ Always build first using `npm run build` and start the server using `npm start`,
     }
   ```
   This above API is for recording the interaction with the resataurant associated with the lead id.
-- Get `http://localhost:3000/api/interactions/:leadId` or `https://kam-62ez.onrender.com/api/interactions/:leadId` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/interactions/:leadId` or `https://kam-62ez.onrender.com/api/interactions/:leadId` \
   Sample input: Provide lead id in the url. \
   This above API fetches the recent interaction details according to the lead id provided.
-- Get `http://localhost:3000/api/interactions/todays-pending-calls` or `https://kam-62ez.onrender.com/api/interactions/todays-pending-calls` \
+- 𝗚𝗘𝗧 `http://localhost:3000/api/interactions/todays-pending-calls` or `https://kam-62ez.onrender.com/api/interactions/todays-pending-calls` \
   Sample input: No input required. \
   This API fetches interaction details of the current day where attribute type is 'Call' and attribute followUpRequired is true.
-- Put `http://localhost:3000/api/interactions/followUp/:id` or `https://kam-62ez.onrender.com/api/interactions/followUp/:id` \
+- 𝗣𝗨𝗧 `http://localhost:3000/api/interactions/followUp/:id` or `https://kam-62ez.onrender.com/api/interactions/followUp/:id` \
   Sample input: Interaction id to be provided in the url.
   ```bash
     {
