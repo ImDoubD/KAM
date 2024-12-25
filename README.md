@@ -100,7 +100,7 @@ This API is to update the followUpRequired of given interaction id.
 
 
 ## Deployment
-This backend project is deployed on Render (its a free instance so it might spin down with inactivity delaying the service by 50 seconds).
-The deployed URL is : `https://kam-62ez.onrender.com/`.
-So without even starting the backend server, one can easily hit the APIs using this URL. 
-Just replace the `http://localhost:3000/` with the above given URL.
+- This backend project is deployed on Render (its a free instance so it might spin down with inactivity delaying the service by 50 seconds).
+- The deployed URL is : `https://kam-62ez.onrender.com/`.
+- So without even starting the backend server, one can easily hit the APIs using this URL. 
+- Just replace the `http://localhost:3000/` with the above given URL.
