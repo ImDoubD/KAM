@@ -32,8 +32,7 @@ class InteractionController {
 
   async getTodaysPendingCalls(req: Request, res: Response) {
     try {
-      const leadId = Number(req.params.leadId);
-      const pendingCalls = await interactionService.getTodaysPendingCalls(leadId);
+      const pendingCalls = await interactionService.getTodaysPendingCalls();
       console.log(pendingCalls);
       res.json(pendingCalls);
     } catch (error) {

@@ -39,7 +39,7 @@ class InteractionService {
       }
   }
 
-  async getTodaysPendingCalls(leadId: number) {
+  async getTodaysPendingCalls() {
     const today = new Date().toISOString().split("T")[0];
   const startOfDay = new Date(`${today}T00:00:00.000Z`);
   const endOfDay = new Date(`${today}T23:59:59.999Z`);
@@ -48,7 +48,6 @@ class InteractionService {
 
   const pendingCalls = await Interaction.findAll({
     where: {
-      leadId: leadId,
       type: "Call",
       followUpRequired: true,
       date: {
