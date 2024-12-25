@@ -1,6 +1,7 @@
 import Interaction from "../model/interactionModel";
 import Lead from "../model/leadModel";
 import { InteractionData } from "../types";
+import { Op } from "sequelize";
 
 class InteractionService {
   async createInteraction(data: InteractionData) {
@@ -37,6 +38,40 @@ class InteractionService {
         }
       }
   }
+
+  async getTodaysPendingCalls(leadId: number) {
+    const today = new Date().toISOString().split("T")[0];
+  const startOfDay = new Date(`${today}T00:00:00.000Z`);
+  const endOfDay = new Date(`${today}T23:59:59.999Z`);
+
+  console.log("Filters applied: startOfDay =", startOfDay, ", endOfDay =", endOfDay);
+
+  const pendingCalls = await Interaction.findAll({
+    where: {
+      leadId: leadId,
+      type: "Call",
+      followUpRequired: true,
+      date: {
+        [Op.between]: [startOfDay, endOfDay],
+      },
+    },
+  });
+
+    return pendingCalls;
+  }
+
+  async updateFollowUpStatus(interactionId: number, followUpRequired: boolean) {
+    const interaction = await Interaction.findByPk(interactionId);
+
+    if (!interaction) {
+      throw new Error("Interaction not found.");
+    }
+
+    interaction.followUpRequired = followUpRequired;
+    await interaction.save();
+    return interaction;
+  }
+
 }
 
 export default new InteractionService();

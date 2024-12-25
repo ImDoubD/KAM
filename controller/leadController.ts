@@ -5,6 +5,7 @@ import { LeadData } from "../types";
 class LeadController {
   async createLead(req: Request, res: Response) {
     try {
+      console.log("hello 1")
       const data: LeadData = req.body;
       const lead = await leadService.createLead(data);
       res.status(201).json(lead);
@@ -19,6 +20,7 @@ class LeadController {
 
   async getLeads(req: Request, res: Response) {
     try {
+      console.log("hello 2")
       const leads = await leadService.getAllLeads();
       res.json(leads);
     } catch (error) {
@@ -32,6 +34,7 @@ class LeadController {
 
   async getLead(req: Request, res: Response) {
     try {
+      console.log("hello 3")
       const lead = await leadService.getLeadById(Number(req.params.id));
       res.json(lead);
     } catch (error) {
@@ -45,6 +48,7 @@ class LeadController {
 
   async updateLead(req: Request, res: Response) {
     try {
+      console.log("hello 4")
       const data: Partial<LeadData> = req.body;
       const lead = await leadService.updateLead(Number(req.params.id), data);
       res.json(lead);
@@ -59,6 +63,7 @@ class LeadController {
 
   async deleteLead(req: Request, res: Response) {
     try {
+      console.log("hello 5")
       const result = await leadService.deleteLead(Number(req.params.id));
       res.json(result);
     } catch (error) {
@@ -69,6 +74,28 @@ class LeadController {
         }
       }
   }
+
+  async searchLeads(req: Request, res: Response) {
+    try {
+      console.log("hello 6")
+      const query = req.query.query as string;
+      const status = req.query.status as string;
+      const assignedKAM = req.query.assignedKAM as string;
+  
+      console.log("Query Params:", req.query);
+      const result = await leadService.searchLeads(
+        query,
+        status,
+        assignedKAM
+      );
+  
+      res.json(result);
+    } catch (error) {
+      console.error("Error in searchLeads:", error);
+      res.status(500).json({ error: error instanceof Error ? error.message : "Unknown error occurred" });
+    }
+  }
+  
 }
 
 export default new LeadController();

@@ -1,3 +1,4 @@
+import { Op } from "sequelize";
 import Lead from "../model/leadModel";
 import { LeadData } from "../types";
 
@@ -76,6 +77,31 @@ class LeadService {
           throw new Error("An unknown error occurred while deleting the lead.");
         }
       }
+  }
+
+  async searchLeads(query?: string, status?: string, assignedKAM?: string) {
+    const where: any = {};
+
+    if (query) {
+      where.restaurantName = { [Op.like]: `%${query}%` };
+    }
+    if (status) {
+      where.status = status;
+    }
+    if (assignedKAM) {
+      where.assignedKAM = assignedKAM;
+    }
+
+    const leads = await Lead.findAll({
+      where
+    });
+
+    const totalLeads = await Lead.count({ where });
+
+    return {
+      leads,
+      totalLeads
+    };
   }
 }
 

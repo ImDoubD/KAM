@@ -15,7 +15,14 @@ interface InteractionAttributes {
 interface InteractionCreationAttributes extends Optional<InteractionAttributes, "id"> {}
 
 // Define the model
-class Interaction extends Model<InteractionAttributes, InteractionCreationAttributes> {}
+class Interaction extends Model<InteractionAttributes, InteractionCreationAttributes> {
+  id!: number;
+  date!: string;
+  type!: "Call" | "Visit" | "Order";
+  notes!: string;
+  followUpRequired!: boolean;
+  leadId!: number;
+}
 
 Interaction.init(
   {

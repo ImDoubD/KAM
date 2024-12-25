@@ -29,6 +29,44 @@ class InteractionController {
         }
       }
   }
+
+  async getTodaysPendingCalls(req: Request, res: Response) {
+    try {
+      const leadId = Number(req.params.leadId);
+      const pendingCalls = await interactionService.getTodaysPendingCalls(leadId);
+      console.log(pendingCalls);
+      res.json(pendingCalls);
+    } catch (error) {
+      if (error instanceof Error) {
+        res.status(500).json({ error: error.message });
+      } else {
+        res.status(500).json({ error: "An unknown error occurred" });
+      }
+    }
+  }
+
+  async updateFollowUpStatus(req: Request, res: Response): Promise<void> {
+    try {
+      const interactionId = parseInt(req.params.id, 10);
+      const { followUpRequired } = req.body;
+
+      if (isNaN(interactionId)) {
+        res.status(400).json({ error: "Invalid interaction ID." });
+        return;
+      }
+
+      if (typeof followUpRequired !== "boolean") {
+        res.status(400).json({ error: "Invalid input for followUpRequired. It must be a boolean." });
+        return;
+      }
+
+      const updatedInteraction = await interactionService.updateFollowUpStatus(interactionId, followUpRequired);
+      res.status(200).json(updatedInteraction);
+    } catch (error) {
+      res.status(500).json({ error: error instanceof Error ? error.message : "Unknown error occurred." });
+    }
+  }
+
 }
 
 export default new InteractionController();
